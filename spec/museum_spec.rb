@@ -86,13 +86,13 @@ describe Museum do
 
 		it 'can draw a lottery winner' do
 			
-			expect(dmns.draw_lottery_winner(dead_sea_scrolls)).to eq(patron_1.name || patron_2.name)
+			expect(["Bob", "Johnny"]).to include(dmns.draw_lottery_winner(dead_sea_scrolls))
 			expect(dmns.draw_lottery_winner(gems_and_minerals)).to eq(nil)
 
 		end
 
 		it 'can announce a lottery winner' do 
-			allow(dmns.announce_lottery_winner(imax)).to recieve(:draw_lotter_winner).and_return("Bob has won the IMAX edhibit lottery")
+			allow(dmns.announce_lottery_winner(imax)).to receive(:draw_lotter_winner).and_return("Bob has won the IMAX exhibit lottery")
 
 			expect(dmns.announce_lottery_winner(gems_and_minerals)).to eq("No winners for this lottery")
 		end
